@@ -14,11 +14,7 @@ const section_two = new Vue({
 		another: 1,
 		buttonOne: "btn btn-primary",
 		todos: [
-			{text: "pierwszy todo"},
-			{text: "drugi todo"},
-			{text: "drugi todo"},
-			{text: "drugi todo"},
-			{text: "drugi todo"}
+			{text: "pierwszy todo", done:true },
 		],
 		todoText: '',
 		buttonBlack: true,

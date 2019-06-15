@@ -10,3 +10,6 @@ section#first {
 .color_black{
 	background: black;
 }
+.done {
+	text-decoration: line-through;
+}

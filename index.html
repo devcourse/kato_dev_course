@@ -79,16 +79,16 @@
 	<h1>Zadania do wykonania</h1>
 	<div class="row">
 		<ul>
-			<li v-for="todo in todos">
+<!-- 			<li v-for="todo in todos">
 				{{todo.text}}
-			</li>
+			</li> -->
 			<!-- druga rozszerzona wersja petli v-for -->
 			<li v-for="(todo, index) in todos" :key="todo.id">
-
-				{{index}}. {{todo.text}}
+				<span :class="{'done': todo.done}">{{index}}. {{todo.text}} - {{todo.done}}</span>
 				{{ index === 0 ? 'Pierwszy element' : '' }}
 				<button @click="deleteTodo(index, todo)">Usuń</button>
-
+				<button @click="todo.done = !todo.done">Wykonane</button>
+				
 			</li>
 		</ul>
 	</div>
