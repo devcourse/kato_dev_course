@@ -46,15 +46,28 @@
 <section id="section_two">
 	<div class="container">
 		<!-- <h1>{{name}}</h1>				 -->
-		<h1 v-if="bool">{{name}}</h1>
-		<button
-			type="button"
-			class="btn btn-primary" 
-			v-on:click="bool = false"> Usuń</button>
-		<button 
-			type="button"
-			class="btn btn-primary"
-			v-on:click="bool = true"> Pokaż</button>
+		<div class="show">
+			<h1 v-if="bool">{{name}}</h1>
+			<button
+				:category="buttonCategory"
+				type="button"
+				class="btn btn-primary" 
+				@click="bool = false"> Usuń</button>
+			<button 
+				v-bind:category="buttonCategoryTwo"
+				type="button"
+				class="btn btn-primary"
+				v-on:click="bool = true"> Pokaż</button>
+		</div>
+
+		<div>
+			<button
+				:class="buttonOne" 
+				@click="another++">Dodaj o 1</button>
+			<button
+				@click="another--">odejmij o 1</button>
+			{{another}}
+		</div>
 
 	</div>
 </section>
