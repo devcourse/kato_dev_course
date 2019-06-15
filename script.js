@@ -122,36 +122,59 @@
 // (x == '5') // output true - sprawdzanie typu
 // (x === '5') // output false - sprawdzanie typu
 
-function writeString($event) {
-	console.log(this); //sprawdzamy czy istnieje this? i co zawiera
-	// przypisanie obiektu z zawartością klas do stałej
-	const classList = event.target.classList;
-	// wykorzystanie metody contains do 
-	// sprawdzenia czy nasz element klikniety posiada klase test
-	if ( classList.contains('test') == true ) {
-		console.log('jest klasa test');
-	} else {
-		console.log('nie ma klasy test');
-	}
-	// quest 1
-// warunek - jeśli element posiada 
-// klasę test, wypluj console.log 
-// ze stringiem "hej"
-	// quest 2
-// dodaj do elementu klikniętego klasę "dodana"
+// function writeString($event) {
+// 	console.log(this); //sprawdzamy czy istnieje this? i co zawiera
+// 	// przypisanie obiektu z zawartością klas do stałej
+// 	const classList = event.target.classList;
+// 	// wykorzystanie metody contains do 
+// 	// sprawdzenia czy nasz element klikniety posiada klase test
+// 	if ( classList.contains('test') == true ) {
+// 		console.log('jest klasa test');
+// 	} else {
+// 		console.log('nie ma klasy test');
+// 	}
+// 	// quest 1
+// // warunek - jeśli element posiada 
+// // klasę test, wypluj console.log 
+// // ze stringiem "hej"
+// 	// quest 2
+// // dodaj do elementu klikniętego klasę "dodana"
+// }
+
+// // wykorzystanie atrybutu funkcyjnego bazując tylko i wyłącznie na js
+// 	// gdy znamy id elementu
+// 	const el = document.getElementById("nazwa_id");
+// 	el.onclick = nazwa_funkcji;
+// 	function nazwa_funkcji () {
+// 		console.log('wykonanie onclick');
+// 	}
+// // inne atrybuty funkcyjne 
+// onkeyup
+// onkeydown
+// onkeypress
+// onfocus
+// onblur
+// onchange
+
+
+let person = {
+    name: "Peter",
+    age: 28,
+    gender: "Male"
+};
+// pętla która pozwala przejśc przez właściwości wszystkie obiektu
+for (let i in person) {
+	console.log(person[i])
 }
 
-// wykorzystanie atrybutu funkcyjnego bazując tylko i wyłącznie na js
-	// gdy znamy id elementu
-	const el = document.getElementById("nazwa_id");
-	el.onclick = nazwa_funkcji;
-	function nazwa_funkcji () {
-		console.log('wykonanie onclick');
-	}
-// inne atrybuty funkcyjne 
-onkeyup
-onkeydown
-onkeypress
-onfocus
-onblur
-onchange
+let array = ["one", "two", "four"];
+// pętla przechądząca przez wszystkie elementy tablicy
+// nie powinno się używać tej pętli gdzie ważne są indexy naszej tablicy
+for ( let element of array ) {
+	console.log(element)
+}
+
+let string = "katowiceNoca";
+for ( let char of string) {
+	console.log(char)
+}
