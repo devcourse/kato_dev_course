@@ -67,6 +67,12 @@
 			<button
 				@click="another--">odejmij o 1</button>
 			{{another}}
+
+			<h3>Stwórz content html</h3>
+			<textarea v-model="html_textarea" cols="30" rows="10"></textarea>
+			<div class="raw-html" v-html="html_textarea">
+			</div>
+
 		</div>
 
 <div class="questThreeTodos">
@@ -81,6 +87,7 @@
 
 				{{index}}. {{todo.text}}
 				{{ index === 0 ? 'Pierwszy element' : '' }}
+				<button @click="deleteTodo(index, todo)">Usuń</button>
 
 			</li>
 		</ul>
@@ -90,6 +97,11 @@
 		{{todoText}}
 		<button :class="inputClasses" @click="addTodo">Dodaj todo</button>
 		<button :class="{'color_black': buttonBlack}"></button>
+
+		
+		<div v-bind:[bindedAttr]="methodForBind" ></div>
+		<div class="btn" category="vat" ></div>
+
 	</div>
 
 </div>

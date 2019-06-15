@@ -21,7 +21,9 @@ const section_two = new Vue({
 			{text: "drugi todo"}
 		],
 		todoText: '',
-		buttonBlack: true
+		buttonBlack: true,
+		html_textarea: '',
+		bindedAttr: 'class'
 	},
 	methods: {
 		// pierwszy sposób tworzenie metody
@@ -34,6 +36,21 @@ const section_two = new Vue({
 				{text: vm.todoText}
 			);
 			vm.todoText = '';
+		},
+		deleteTodo(index, el) {
+			const vm = this;
+			// vm.$delete(tablica/obiekt, numer_indexu)
+			// rozwiązanie stworzone i polecane przez vue
+			// pierwszy argument to tablica, 
+			// drugi to index elementu do usunięcia
+			vm.$delete(vm.todos, index);
+
+			// rozwiązanie czystego javascript'u, 
+			// metoda filter wykonuje pętle przez 
+			// wszystkie elementy tablicy todos, 
+			// następnie zwraca tylko te elementy 
+			// który spełnią napisany w funkcji warunek
+			vm.todos = vm.todos.filter(i => i != el);
 		}
 	},
 	computed: {
@@ -42,6 +59,9 @@ const section_two = new Vue({
 				return 'color_black';
 			}
 		}
+		// bindedAttr () {
+		// 	return 'class';
+		// }
 	}
 })
 
