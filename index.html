@@ -14,13 +14,13 @@
   </head>
   <body>
 	<!-- <input class="test test2" onclick="writeString()" type="text"> -->
-	main>section#first>.container>.row+.row
-	
+	<!-- main>section#first>.container>.row+.row -->
+
 	<header>
-		<nav>Nawigacja</nav>
+		<!-- <nav>Nawigacja</nav> -->
 	</header>
 	<main>
-		<section id="first">
+<!-- 		<section id="first">
 
 			<div class="container">
 				<div class="row">
@@ -42,10 +42,27 @@
 				</div>
 			</div>
 
-		</section>
+		</section> -->
+<section id="section_two">
+	<div class="container">
+		<!-- <h1>{{name}}</h1>				 -->
+		<h1 v-if="bool">{{name}}</h1>
+		<button
+			type="button"
+			class="btn btn-primary" 
+			v-on:click="bool = false"> Usuń</button>
+		<button 
+			type="button"
+			class="btn btn-primary"
+			v-on:click="bool = true"> Pokaż</button>
+
+	</div>
+</section>
+
+
 	</main>
 	<footer>
-		Stopka copyright
+		<!-- Stopka copyright -->
 	</footer>
 
 
@@ -64,7 +81,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	
     <!-- nasze pliki js -->
-	<script src="script.js"></script>
+	<!-- <script src="script.js"></script> -->
+	<script src="custom_vue.js"></script>
 
   </body>
 </html>
