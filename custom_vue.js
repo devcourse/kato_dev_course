@@ -21,7 +21,13 @@ const section_two = new Vue({
 		html_textarea: '',
 		bindedAttr: 'class',
 		searchTodo: '',
-		type: false
+		type: false,
+		searchAxios: '',
+		answerAxios: {
+			text: '',
+			img: ''
+		},
+		delayGetAnswerAxios: null,
 	},
 	methods: {
 		// pierwszy sposób tworzenie metody
@@ -49,7 +55,28 @@ const section_two = new Vue({
 			// następnie zwraca tylko te elementy 
 			// który spełnią napisany w funkcji warunek
 			vm.todos = vm.todos.filter(i => i != el);
-		}
+		},
+	    getAnswerAxios () {
+
+	      if (this.searchAxios.indexOf('?') === -1) {
+	        this.answerAxios.text = 'Aby uzyskać odpowiedź dodaj znak zapytania';
+	        return
+	      }
+
+	      this.answerAxios.text = 'Niech pomyślę..';
+
+	      const vm = this
+	      axios.get('https://yesno.wtf/api')
+	        .then(function (response) {
+	        	console.log(response);
+	        	vm.answerAxios.text = response.data.answer
+	          vm.answerAxios.img = response.data.image
+	        })
+	        .catch(function (error) {
+	          vm.answerAxios.text = 'Error! Could not reach the API. ' + error
+	        })
+	    }
+
 	},
 	computed: {
 		inputClasses () {
@@ -71,24 +98,24 @@ const section_two = new Vue({
 			return searchedTodosArr;
 		},
 		// metoda computed z możliwością przekazanie elementu w parametre
-		exampleComputed: {
-			get: function () {
-				return 'Siemanko';
-			},
-			set: function (argumentWReferencji) {
-				console.log(argumentWReferencji);
-			}
-		},
+		// exampleComputed: {
+		// 	get: function () {
+		// 		return 'Siemanko';
+		// 	},
+		// 	set: function (argumentWReferencji) {
+		// 		console.log(argumentWReferencji);
+		// 	}
+		// },
 		// bindedAttr () {
 		// 	return 'class';
 		// }
 	},
 	watch: {
 		// deklaracja zmiennej którą nasłuchujemy w postaci funkcji
-		nazwaZmiennejWInstancji (nowaZawartość, staraZawartość) {
-			console.log(nowaZawartość);
-			console.log(staraZawartość);
-		},
+		// nazwaZmiennejWInstancji (nowaZawartość, staraZawartość) {
+		// 	console.log(nowaZawartość);
+		// 	console.log(staraZawartość);
+		// },
 		// searchTodo (newSearch, oldSearch) {
 		// 	const oldTodos = this.todos;
 		// 	let newTodos = oldTodos.filter(f => {
@@ -100,6 +127,13 @@ const section_two = new Vue({
 		// 	// this.searchedTodos = newTodos; 
 		// 	console.log(this.todos);
 		// }
+		searchAxios (newSearch, oldSearch) {
+			const vm = this;
+			this.answerAxios.text = 'Dajesz, dajesz, długo nie będę czekać';
+			setTimeout(function() {
+				vm.getAnswerAxios();
+			}, 500);
+		}
 	},
 	created () {
 		console.log('created');

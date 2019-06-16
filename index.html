@@ -60,7 +60,7 @@
 						v-on:click="bool = true"> Pokaż</button>
 				</div>
 
-				<div class="questTwo">
+				<div class="quest-two">
 					<button
 						:class="buttonOne" 
 						@click="another++">Dodaj o 1</button>
@@ -75,7 +75,7 @@
 
 				</div>
 
-				<div class="questThreeTodos">
+				<div class="quest-three-todos">
 					<h1>Zadania do wykonania</h1>
 					<div class="row">
 						<ul>
@@ -109,19 +109,26 @@
 
 				</div>
 
-<div class="questFour">
-	
-	<div class="searched-todos">
-		<h3>Wyszukiwane pozycje</h3>
-		<input placeholder="Wyszukaj" type="text" v-model="searchTodo">
-		<ul class="searched-todos-ul">
-			<li class="li-todo-item" v-for="(todo, index) in searchedTodos">
-				{{todo.text}}
-			</li>
-		</ul>
-	</div>
-	{{exampleComputed()}}
+				<div class="quest-four">
+					
+					<div class="searched-todos">
+						<h3>Wyszukiwane pozycje</h3>
+						<input placeholder="Wyszukaj" type="text" v-model="searchTodo">
+						<ul class="searched-todos-ul">
+							<li class="li-todo-item" v-for="(todo, index) in searchedTodos">
+								{{todo.text}}
+							</li>
+						</ul>
+					</div>
 
+				</div>
+
+<div class="quest-five">
+	<div class="searching-axios">
+		<input type="text" v-model="searchAxios">
+		<img :src="answerAxios.img" alt="">
+		{{answerAxios.text}}
+	</div>
 </div>
 
 
@@ -142,7 +149,7 @@
 
     <!-- vuejs -->
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- nasze pliki js -->
 	<!-- <script src="script.js"></script> -->
 	<script src="custom_vue.js"></script>
