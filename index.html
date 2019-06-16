@@ -43,84 +43,96 @@
 			</div>
 
 		</section> -->
-<section id="section_two">
-	<div class="container">
-		<!-- <h1>{{name}}</h1>				 -->
-		<div class="show">
-			<h1 v-if="bool">{{name}}</h1>
-			<button
-				:category="buttonCategory"
-				type="button"
-				class="btn btn-primary" 
-				@click="bool = false"> Usuń</button>
-			<button 
-				v-bind:category="buttonCategoryTwo"
-				type="button"
-				class="btn btn-primary"
-				v-on:click="bool = true"> Pokaż</button>
-		</div>
+		<section id="section_two">
+			<div class="container">
+				<!-- <h1>{{name}}</h1>				 -->
+				<div class="show">
+					<h1 v-if="bool">{{name}}</h1>
+					<button
+						:category="buttonCategory"
+						type="button"
+						class="btn btn-primary" 
+						@click="bool = false"> Usuń</button>
+					<button 
+						v-bind:category="buttonCategoryTwo"
+						type="button"
+						class="btn btn-primary"
+						v-on:click="bool = true"> Pokaż</button>
+				</div>
 
-		<div class="questTwo">
-			<button
-				:class="buttonOne" 
-				@click="another++">Dodaj o 1</button>
-			<button
-				@click="another--">odejmij o 1</button>
-			{{another}}
+				<div class="questTwo">
+					<button
+						:class="buttonOne" 
+						@click="another++">Dodaj o 1</button>
+					<button
+						@click="another--">odejmij o 1</button>
+					{{another}}
 
-			<h3>Stwórz content html</h3>
-			<textarea v-model="html_textarea" cols="30" rows="10"></textarea>
-			<div class="raw-html" v-html="html_textarea">
-			</div>
+					<h3>Stwórz content html</h3>
+					<textarea v-model="html_textarea" cols="30" rows="10"></textarea>
+					<div class="raw-html" v-html="html_textarea">
+					</div>
 
-		</div>
+				</div>
 
-<div class="questThreeTodos">
-	<h1>Zadania do wykonania</h1>
-	<div class="row">
-		<ul>
-<!-- 			<li v-for="todo in todos">
+				<div class="questThreeTodos">
+					<h1>Zadania do wykonania</h1>
+					<div class="row">
+						<ul>
+				<!-- 			<li v-for="todo in todos">
+								{{todo.text}}
+							</li> -->
+							<!-- druga rozszerzona wersja petli v-for -->
+
+							<br><br>
+							<div>
+								<li v-for="(todo, index) in todos" :key="todo.id">
+									<span :class="{'done': todo.done}">{{index}}. {{todo.text}} - {{todo.done}}</span>
+									{{ index === 0 ? 'Pierwszy element' : '' }}
+									<button @click="deleteTodo(index, todo)">Usuń</button>
+									<button @click="todo.done = !todo.done">Wykonane</button>
+									
+								</li>
+							</div>
+
+						</ul>
+					</div>
+					<div class="row">
+						<input v-model="todoText" type="text">
+						{{todoText}}
+						<button :class="inputClasses" @click="addTodo">Dodaj todo</button>
+						<button :class="{'color_black': buttonBlack}"></button>
+
+						<!-- <div v-bind:[bindedAttr]="methodForBind" ></div> -->
+						<div class="btn" category="vat" ></div>
+					</div>
+
+				</div>
+
+<div class="questFour">
+	
+	<div class="searched-todos">
+		<h3>Wyszukiwane pozycje</h3>
+		<input placeholder="Wyszukaj" type="text" v-model="searchTodo">
+		<ul class="searched-todos-ul">
+			<li class="li-todo-item" v-for="(todo, index) in searchedTodos">
 				{{todo.text}}
-			</li> -->
-			<!-- druga rozszerzona wersja petli v-for -->
-			<li v-for="(todo, index) in todos" :key="todo.id">
-				<span :class="{'done': todo.done}">{{index}}. {{todo.text}} - {{todo.done}}</span>
-				{{ index === 0 ? 'Pierwszy element' : '' }}
-				<button @click="deleteTodo(index, todo)">Usuń</button>
-				<button @click="todo.done = !todo.done">Wykonane</button>
-				
 			</li>
 		</ul>
 	</div>
-	<div class="row">
-		<input v-model="todoText" type="text">
-		{{todoText}}
-		<button :class="inputClasses" @click="addTodo">Dodaj todo</button>
-		<button :class="{'color_black': buttonBlack}"></button>
-
-		
-		<div v-bind:[bindedAttr]="methodForBind" ></div>
-		<div class="btn" category="vat" ></div>
-
-	</div>
+	{{exampleComputed()}}
 
 </div>
 
 
-	</div>
-</section>
+			</div>
+		</section>
 
 
 	</main>
 	<footer>
 		<!-- Stopka copyright -->
 	</footer>
-
-
-
-
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

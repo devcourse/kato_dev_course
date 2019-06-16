@@ -19,7 +19,9 @@ const section_two = new Vue({
 		todoText: '',
 		buttonBlack: true,
 		html_textarea: '',
-		bindedAttr: 'class'
+		bindedAttr: 'class',
+		searchTodo: '',
+		type: false
 	},
 	methods: {
 		// pierwszy sposób tworzenie metody
@@ -29,7 +31,7 @@ const section_two = new Vue({
 		addTodo () {
 			const vm = this;
 			vm.todos.push(
-				{text: vm.todoText}
+				{text: vm.todoText, done: false}
 			);
 			vm.todoText = '';
 		},
@@ -54,10 +56,71 @@ const section_two = new Vue({
 			if (this.buttonBlack) {
 				return 'color_black';
 			}
-		}
+		},
+		searchedTodos () {
+			let searchedTodosArr = this.todos;
+			let searchTodo = this.searchTodo;
+			if (!searchTodo) { return searchedTodosArr}
+
+			searchTodo = searchTodo.trim().toLowerCase();
+			searchedTodosArr = searchedTodosArr.filter(function(item) {
+				if (item.text.toLowerCase().indexOf(searchTodo) !== -1) {
+					return item;
+				}
+			})
+			return searchedTodosArr;
+		},
+		// metoda computed z możliwością przekazanie elementu w parametre
+		exampleComputed: {
+			get: function () {
+				return 'Siemanko';
+			},
+			set: function (argumentWReferencji) {
+				console.log(argumentWReferencji);
+			}
+		},
 		// bindedAttr () {
 		// 	return 'class';
 		// }
+	},
+	watch: {
+		// deklaracja zmiennej którą nasłuchujemy w postaci funkcji
+		nazwaZmiennejWInstancji (nowaZawartość, staraZawartość) {
+			console.log(nowaZawartość);
+			console.log(staraZawartość);
+		},
+		// searchTodo (newSearch, oldSearch) {
+		// 	const oldTodos = this.todos;
+		// 	let newTodos = oldTodos.filter(f => {
+		// 		console.log(f.text);
+		// 		console.log(newSearch);
+		// 		f.text = newSearch;
+		// 	})
+		// 	console.log(newTodos);
+		// 	// this.searchedTodos = newTodos; 
+		// 	console.log(this.todos);
+		// }
+	},
+	created () {
+		console.log('created');
+	},
+	beforeMount () {
+		console.log('beforeMount');
+	},
+	mounted () {
+		console.log('mounted');
+	},
+	beforeUpdate () {
+		console.log('beforeUpdate');
+	},
+	updated () {
+		console.log('updated');
+	},
+	beforeDestroy () {
+		console.log('beforeDestroy');
+	},
+	destroyed () {
+		console.log('destroyed');
 	}
 })
 
