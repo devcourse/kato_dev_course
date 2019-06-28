@@ -146,11 +146,30 @@
 						:key="single.id">
 						</input-component> -->
 					<!-- konstrukcja komponentu z elementami w środku przekazywanymi do slotu -->
-					<input-component 
-						v-for="(single) in label_inputs"
+	<!-- 				<input-component 
+						v-for="single in label_inputs"
 						:label_input="single.text" 
 						:key="single.id">
 						<div>sadasd</div>					
+					</input-component>-->
+
+<!-- komponent z slotami o własnych nazwach i rozmieszczeniu -->
+					<input-component 
+						v-for="single in label_inputs"
+						:label_input="single.text" 
+						:key="single.id">
+						<!-- zawartośc która ląduje do slota z name="header" -->
+						<template v-slot:header>
+							<h2>Nagłowek w headerze</h2>
+						</template>
+						
+						<!-- zawartośc która ląduje do zwykłego slota -->
+						<div>sadasd</div>
+
+						<!-- zawartośc która ląduje do slota z name="footer" -->
+						<template v-slot:footer>
+							<h2>stopka tego komponentu</h2>
+						</template>			
 					</input-component>
 
 				</div>

@@ -13,9 +13,15 @@ Vue.component('input-component', {
 	],
 	template: `
 	<div>
+		<header>
+			<slot name="header"></slot>
+		</header>
 		<label :for="input_name">{{label_input}}</label>
 		<slot></slot>
 		<input :id="input_name" :name="input_name"></input>
+		<footer>
+			<slot name="footer"></slot>
+		</footer>
 	</div>`
 })
 
