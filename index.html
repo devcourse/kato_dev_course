@@ -172,6 +172,11 @@
 						</template>			
 					</input-component>
 
+					<button @click="currentTab = 'Home'">Home</button>
+					<button @click="currentTab = 'Posts'">Posts</button>
+					<button @click="currentTab = 'Archive'">Archives</button>
+					<component :is="currentTabComponent"></component>
+
 				</div>
 			</div>
 		</section>

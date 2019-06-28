@@ -26,6 +26,19 @@ Vue.component('input-component', {
 })
 
 
+Vue.component('tab-home', {
+	template: '<div>Tab home sprawdźmy</div>'
+})
+Vue.component('tab-posts', {
+	template: '<div>Tab posts</div>'
+})
+Vue.component('tab-archive', {
+	template: '<div>Tab archive</div>'
+})
+
+
+
+
 
 Vue.component('single-post', {
 	props:['title', 'content'],
@@ -68,7 +81,9 @@ const section_two = new Vue({
 		],
 		label_input_one: 'label_input_one',
 		label_input_two: 'label_input_two',
-		label_input_three: 'label_input_three'
+		label_input_three: 'label_input_three',
+		tabs:['Home', 'Posts', 'Archive'],
+		currentTab:'Home'
 	},
 	methods: {
 		// pierwszy sposób tworzenie metody
@@ -120,6 +135,9 @@ const section_two = new Vue({
 
 	},
 	computed: {
+		currentTabComponent: function () {
+			return 'tab-' + this.currentTab.toLowerCase()
+		},
 		inputClasses () {
 			if (this.buttonBlack) {
 				return 'color_black';
