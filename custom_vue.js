@@ -179,6 +179,9 @@ const section_two = new Vue({
 	        .catch(function (error) {
 	          vm.answerAxios.text = 'Error! Could not reach the API. ' + error
 	        })
+	    },
+	    getPosts () {
+	    	return axios.get('https://jsonplaceholder.typicode.com/posts')
 	    }
 
 	},
@@ -245,21 +248,13 @@ const section_two = new Vue({
 	},
 	created () {
 		const vm = this
-
-// wejść na https://jsonplaceholder.typicode.com/ 
-// i pozyskać listę post poprzez axiosa,
-// następnie zapisać do obiektu zadeklarowanego w instancji
-
-		// axios.get('https://jsonplaceholder.typicode.com/posts')
-		//   .then(function (response) {
-		//   	console.log(response.data)
-		//   	vm.posts = response.data
-		//   })
-		//   .catch(function (error) {
-		//   })
-
-		console.log(vm.posts)
-		console.log('created');
+		// wejść na https://jsonplaceholder.typicode.com/ 
+		// i pozyskać listę post poprzez axiosa,
+		// następnie zapisać do obiektu zadeklarowanego w instancji
+		// wykonanie metody getPosts pozyskującej dane o postach z api jsonplaceholder
+		this.getPosts()
+		.then( response => vm.posts = response.data)
+		.catch( err => console.log(err))
 	},
 	beforeMount () {
 		console.log('beforeMount');
