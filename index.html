@@ -179,6 +179,14 @@
 					<component :is="currentTabComponent"></component>
 
 				</div>
+
+				<div class="posts">
+					<single-post
+						v-for="(post, index) in posts"
+						:title="post.title"
+						:body="post.body"
+						:post_id="post.id"></single-post>
+				</div>
 			</div>
 		</section>
 

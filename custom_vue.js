@@ -41,14 +41,18 @@ Vue.component('tab-archive', {
 
 
 Vue.component('single-post', {
-	props:['title', 'content'],
+	props:['title', 'body', 'post_id'],
 	template: `
 		<div class="single-post">
 			<h3>{{title}}</h3>
-			<div class="content" v-html="content"></div>
+			<div class="content" v-html="body"></div>
 		</div>
 	`	
 })
+
+
+
+
 
 const section_two = new Vue({
 	el: "#section_two",
@@ -83,7 +87,51 @@ const section_two = new Vue({
 		label_input_two: 'label_input_two',
 		label_input_three: 'label_input_three',
 		tabs:['Home', 'Posts', 'Archive'],
-		currentTab:'Archive'
+		currentTab:'Archive',
+		posts:[
+		  {
+		    "userId": 1,
+		    "id": 1,
+		    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+		    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+		  },
+		  {
+		    "userId": 1,
+		    "id": 2,
+		    "title": "qui est esse",
+		    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+		  },
+		  {
+		    "userId": 1,
+		    "id": 3,
+		    "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+		    "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
+		  },
+		  {
+		    "userId": 1,
+		    "id": 4,
+		    "title": "eum et est occaecati",
+		    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
+		  },
+		  {
+		    "userId": 1,
+		    "id": 5,
+		    "title": "eum et est occaecati",
+		    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
+		  },
+		  {
+		    "userId": 1,
+		    "id": 6,
+		    "title": "eum et est occaecati",
+		    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
+		  },
+		  {
+		    "userId": 1,
+		    "id": 7,
+		    "title": "eum et est occaecati",
+		    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
+		  },
+		]
 	},
 	methods: {
 		// pierwszy sposób tworzenie metody
@@ -196,6 +244,21 @@ const section_two = new Vue({
 		}
 	},
 	created () {
+		const vm = this
+
+// wejść na https://jsonplaceholder.typicode.com/ 
+// i pozyskać listę post poprzez axiosa,
+// następnie zapisać do obiektu zadeklarowanego w instancji
+
+		// axios.get('https://jsonplaceholder.typicode.com/posts')
+		//   .then(function (response) {
+		//   	console.log(response.data)
+		//   	vm.posts = response.data
+		//   })
+		//   .catch(function (error) {
+		//   })
+
+		console.log(vm.posts)
 		console.log('created');
 	},
 	beforeMount () {
