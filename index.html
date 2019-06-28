@@ -174,7 +174,8 @@
 
 					<button @click="currentTab = 'Home'">Home</button>
 					<button @click="currentTab = 'Posts'">Posts</button>
-					<button @click="currentTab = 'Archive'">Archives</button>
+					<button @click="currentTab = 'Archive'">Archive</button>
+					<!-- po kliknięciu w button Archive, zmienna currentTab zmienia wartośc na Arhive w wyniku czego funkcja computed currentTabComponents wypluwa poprzez return ciąg znaków tab-archive, przez co tag "component" wyświetla w środku komponent vue o takiej samej nazwie -->
 					<component :is="currentTabComponent"></component>
 
 				</div>

@@ -83,7 +83,7 @@ const section_two = new Vue({
 		label_input_two: 'label_input_two',
 		label_input_three: 'label_input_three',
 		tabs:['Home', 'Posts', 'Archive'],
-		currentTab:'Home'
+		currentTab:'Archive'
 	},
 	methods: {
 		// pierwszy sposób tworzenie metody
@@ -137,6 +137,7 @@ const section_two = new Vue({
 	computed: {
 		currentTabComponent: function () {
 			return 'tab-' + this.currentTab.toLowerCase()
+			// tab-archive
 		},
 		inputClasses () {
 			if (this.buttonBlack) {
