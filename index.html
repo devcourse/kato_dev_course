@@ -132,8 +132,27 @@
 				</div>
 
 				<div class="custom-components">
-					<input-component :> 
+<!-- 					<input-component :label_input="label_input_one">
 					</input-component>
+					<input-component :label_input="label_input_two">
+					</input-component>
+					<input-component :label_input="label_input_three">
+					</input-component> -->
+					
+					<!-- konstrukcja customowego komponentu bez slotów -->
+<!-- 					<input-component 
+						v-for="(single) in label_inputs"
+						:label_input="single.text" 
+						:key="single.id">
+						</input-component> -->
+					<!-- konstrukcja komponentu z elementami w środku przekazywanymi do slotu -->
+					<input-component 
+						v-for="(single) in label_inputs"
+						:label_input="single.text" 
+						:key="single.id">
+						<div>sadasd</div>					
+					</input-component>
+
 				</div>
 			</div>
 		</section>

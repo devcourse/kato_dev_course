@@ -8,11 +8,27 @@ Vue.component('input-component', {
 			input_name: 'newName'
 		}
 	},
-	template: ''+
-	'<div>'+
-		'<label :for="input_name">Test</label>'+
-		'<input :id="input_name" :name="input_name"></input>'+
-	'</div>'
+	props: [
+		'label_input'
+	],
+	template: `
+	<div>
+		<label :for="input_name">{{label_input}}</label>
+		<slot></slot>
+		<input :id="input_name" :name="input_name"></input>
+	</div>`
+})
+
+
+
+Vue.component('single-post', {
+	props:['title', 'content'],
+	template: `
+		<div class="single-post">
+			<h3>{{title}}</h3>
+			<div class="content" v-html="content"></div>
+		</div>
+	`	
 })
 
 const section_two = new Vue({
@@ -39,11 +55,11 @@ const section_two = new Vue({
 			img: ''
 		},
 		delayGetAnswerAxios: null,
-		label_inputs: {
-			one: 'label_input_one',
-			two: 'label_input_two',
-			three: 'label_input_three'
-		},
+		label_inputs: [
+			{text: 'label dynamiczny'},
+			{text: 'label dynamiczny dwa'},
+			{text: 'label dynamiczny trzy'}
+		],
 		label_input_one: 'label_input_one',
 		label_input_two: 'label_input_two',
 		label_input_three: 'label_input_three'
