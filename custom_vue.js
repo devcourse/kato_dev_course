@@ -2,7 +2,18 @@
 
 
 
-
+Vue.component('input-component', {
+	data: function () {
+		return {
+			input_name: 'newName'
+		}
+	},
+	template: ''+
+	'<div>'+
+		'<label :for="input_name">Test</label>'+
+		'<input :id="input_name" :name="input_name"></input>'+
+	'</div>'
+})
 
 const section_two = new Vue({
 	el: "#section_two",
@@ -28,6 +39,14 @@ const section_two = new Vue({
 			img: ''
 		},
 		delayGetAnswerAxios: null,
+		label_inputs: {
+			one: 'label_input_one',
+			two: 'label_input_two',
+			three: 'label_input_three'
+		},
+		label_input_one: 'label_input_one',
+		label_input_two: 'label_input_two',
+		label_input_three: 'label_input_three'
 	},
 	methods: {
 		// pierwszy sposób tworzenie metody
