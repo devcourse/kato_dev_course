@@ -25,23 +25,26 @@
 
 					<div class="col-6">
 						<div class="head-nav-right">
-				<div class="head-nav-right-single">
-					<img
-						class="head-nav-right-single-img"
-						src="@/assets/icon-fb.png" alt="">
-				</div>
+							
+							<iconSocial
+								v-for="icon in social_icons"
+								:key="icon.id"
+								:aHref="icon.href"
+								:imgSrc="icon.url"
+								:imgAlt="icon.name"/>
 
-							<div class="head-nav-right-single">
-								<img
-									class="head-nav-right-single-img"
-									src="@/assets/icon-instagram.png" alt="">
-							</div>
+<!-- 							<div
+								v-for="icon in social_icons"
+								:key="icon.id" 
+								class="head-nav-right-single">
+								<a :href="icon.href">
+									<img
+										class="head-nav-right-single-img"
+										:src="icon.url"
+										:alt="icon.alt">
+								</a>
+							</div> -->
 
-							<div class="head-nav-right-single">
-								<img
-									class="head-nav-right-single-img"
-									src="@/assets/icon-twitter.png" alt="">
-							</div>
 						</div>
 					</div>
 				</div>
@@ -60,18 +63,14 @@
 					</div>
 					<div class="col-10">
 						<ul class="head-navigation-ul">
-							<li class="head-navigation-ul-li">
+							<li 
+								v-for="link in menuOne"
+								:key="link.id"
+								class="head-navigation-ul-li">
 								<router-link
 									class="head-navigation-ul-li-a"
-									to="/">
-									Home
-								</router-link>
-							</li>
-							<li class="head-navigation-ul-li">
-								<router-link
-									class="head-navigation-ul-li-a"
-									to="/about"> 
-									About
+									:to="link.route">
+									{{link.name}}
 								</router-link>
 							</li>
 						</ul>	
@@ -83,10 +82,46 @@
 </template>
 
 <script>
+import iconTwitter from '@/assets/icon-twitter.png'
+import iconFb from '@/assets/icon-fb.png'
+import iconInsta from '@/assets/icon-instagram.png'
+
+import iconSocial from '@/components/IconSocial.vue'
+
 export default {
 	name: 'AppHeader',
+	components: {
+		iconSocial
+	},
 	data () {
 		return {
+			social_icons: [
+				{
+					url: iconTwitter,
+					href: 'https://twitter.com',
+					name: 'twitter-icon'
+				},
+				{
+					url: iconFb,
+					href: 'https://facebook.com',
+					name: 'facebook-icon'
+				},
+				{
+					url: iconInsta,
+					href: 'https://instagram.com',
+					name: 'instagram-icon'
+				}
+			],
+			menuOne: [
+				{
+					name: 'Home',
+					route: '/'
+				},
+				{
+					name: 'About',
+					route: '/about'
+				}
+			],
 			menuTwo: [
 				{
 					name: 'Home',
