@@ -14,7 +14,7 @@
 							<router-link
 								v-for="link in menuTwo" 
 								:key="link.id"
-								class="head-nav-left-single":to="link.route">
+								class="head-nav-left-single" :to="link.route">
 								{{link.name}}
 							</router-link>	
 
@@ -22,17 +22,14 @@
 						</div>
 
 					</div>
-
 					<div class="col-6">
 						<div class="head-nav-right">
-							<div 
-							v-for="social in socials"
-							:key="social.id"
-							class="head-nav-right-single">
-								<a :href="social.href"><img
-									class="head-nav-right-single-img"
-									:src="social.url" alt=""></a>
-							</div>
+							<iconSocial 
+								v-for="item in socials"
+								:key="item.key"
+								:aHref="item.href"
+								:imgSrc="item.url"
+							/>
 						</div>
 					</div>
 				</div>
@@ -77,9 +74,13 @@
 import fb from "../../assets/icon-fb.png"
 import twitter from "../../assets/icon-twitter.png"
 import instagram from "../../assets/icon-instagram.png"
+import IconSocial from '@/components/IconSocial'
 
 export default {
 	name: 'AppHeader',
+	components: {
+		IconSocial
+	},
 	data() {
 		return {
 			socials: [
@@ -96,7 +97,7 @@ export default {
 					href: 'https://www.instagram.com'
 				},
 			],
-			menuOne: [
+			menuTwo: [
 				{
 					name: 'Home',
 					route: '/'
