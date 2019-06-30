@@ -25,22 +25,13 @@
 
 					<div class="col-6">
 						<div class="head-nav-right">
-				<div class="head-nav-right-single">
-					<img
-						class="head-nav-right-single-img"
-						src="@/assets/icon-fb.png" alt="">
-				</div>
-
-							<div class="head-nav-right-single">
-								<img
+							<div 
+							v-for="social in socials"
+							:key="social.id"
+							class="head-nav-right-single">
+								<a :href="social.href"><img
 									class="head-nav-right-single-img"
-									src="@/assets/icon-instagram.png" alt="">
-							</div>
-
-							<div class="head-nav-right-single">
-								<img
-									class="head-nav-right-single-img"
-									src="@/assets/icon-twitter.png" alt="">
+									:src="social.url" alt=""></a>
 							</div>
 						</div>
 					</div>
@@ -83,19 +74,37 @@
 </template>
 
 <script>
+import fb from "../../assets/icon-fb.png"
+import twitter from "../../assets/icon-twitter.png"
+import instagram from "../../assets/icon-instagram.png"
+
 export default {
 	name: 'AppHeader',
-	data () {
+	data() {
 		return {
-			menuTwo: [
+			socials: [
+				{
+					url: fb,
+					href: 'https://www.facebook.com'
+				},
+				{
+					url: twitter,
+					href: 'https://www.twitter.com'
+				},
+				{
+					url: instagram,
+					href: 'https://www.instagram.com'
+				},
+			],
+			menuOne: [
 				{
 					name: 'Home',
 					route: '/'
 				},
 				{
-					name: 'About',
+					name: 'about',
 					route: '/about'
-				}
+				},
 			]
 		}
 	}
