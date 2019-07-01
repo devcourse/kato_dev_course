@@ -76,7 +76,13 @@ w elemencie z klasami .col-md-4.col-12 wykonujemy poniższe polecenie emmeta
 					
 					<ul class="upp-footer-col-ul-tags">
 						<li class="upp-footer-col-ul-tags-li">
-							
+							asdas
+						</li>
+						<li class="upp-footer-col-ul-tags-li">
+							asdas
+						</li>
+						<li class="upp-footer-col-ul-tags-li">
+							asdas
 						</li>
 					</ul>
 
@@ -110,7 +116,9 @@ export default {
 }
 </script>
 <style>	
-
+.upp-footer {
+	background: rgb(246, 246, 246);
+}
 .upp-footer-col {
 	padding: 10px;
 }
@@ -129,13 +137,37 @@ export default {
 .upp-footer-col-header {
 	font-size: 14px;
 /*
-	border-bottom-width: 1px
+	border-bottom-width: 1px;
 	border-bottom-style: solid; 
-	border-bottom-color: black
+	border-bottom-color: black;
+	powyższe właściwości są tym samym co widzimy linijkę niżej, tylko w rozbudowanej wersji
 */
 	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	/*
+	poniższa właściwośc nadpiszę szerokośc borderu powyższej
+	border-bottom-width: 4px;
+	*/
 	padding: 10px 0;
+	margin-bottom: 15px;
 	text-align: left;
 	font-weight: 700;
+}
+.upp-footer-col-ul-normal,
+.upp-footer-col-ul-tags {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: left;
+}
+.upp-footer-col-ul-tags-li {
+	padding: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	background: black;
+	border-radius: 10px;
+	display: inline-block;
+	text-transform: uppercase;
+	color: white;
+	font-size: 10px;
 }
 </style>
