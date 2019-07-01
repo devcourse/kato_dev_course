@@ -1,17 +1,80 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<section class="posts">
+		<div class="container">
+			<!-- kod emmet -->
+<!-- .row>.single-post>.col-md-6.col-12+.col-md-6.col-12 -->
+			<div class="row">
+				<!-- dokończyć in da hause -->
+				<div
+					v-for="post in posts"
+					:key="post.id" 
+					class="single-post">
+					<div class="col-md-6 col-12">
+						<!-- strona z darmowymi zdjęciami bardzo dobrej jakości -->
+						<!-- https://unsplash.com/ -->
+						<img
+							class="single-post-left-img"
+							src="@/assets/single-post.jpg"
+							alt="">
+					</div>
+					<div class="col-md-6 col-12"></div>
+				</div>
+			</div>
+		</div>
+	</section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+import axios from 'axios'
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    // HelloWorld
+  },
+  data() {
+  	return {
+  		posts: []
+  	}
+  },
+  methods: {
+  	getPosts() {
+  		return axios.get('https://jsonplaceholder.typicode.com/posts')
+  	}
+  },
+  created () {
+  	const vm = this
+  	this.getPosts()
+  	// poniżej wykorzystanie skróconej wersji funkcji, 
+  	// tzw funkcja strzałkowa
+  	.then(response => {
+  		console.log(response)
+  		vm.posts = response.data
+  	})
+  	.catch(err => {
+  		console.log(err)
+  	})
+	// wyciąganie z api za pośrednictwem zwykłej funkcji
+	// function (response) {
+
+	// }
+	// wyciąganie z api za 
+	// pośrednictwem skróconej funkcji strzałkowej
+	// response => {
+	// }
+
   }
 }
 </script>
+<style>
+.single-post-left-img {
+	width: 100%;
+	border-radius: 8px;
+	/*generator box-shadow https://www.cssmatic.com/box-shadow*/
+	box-shadow: 0 8px 20px rgba(0,0,0,.1),0 10px 44px rgba(0,0,0,.14);
+	transition: transform 0.4s;
+}
+.single-post-left-img:hover {
+	transform: translate(0, -10px);
+}
+</style>
