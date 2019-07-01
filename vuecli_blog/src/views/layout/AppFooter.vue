@@ -43,11 +43,45 @@ w elemencie z klasami .col-md-4.col-12 wykonujemy poniższe polecenie emmeta
 			</div>
 
 			<div class="col-md-4 col-12">
-				<h2>test</h2>
+				
+				<div class="upp-footer-col">
+
+					<div class="upp-footer-col-header">
+						RECENT POSTS
+					</div>
+
+					<!-- kod emmet -->
+					<ul class="upp-footer-col-ul-normal">
+						<li class="upp-footer-col-ul-normal-li">
+							Lorem ipsum dolor
+						</li>
+						<li class="upp-footer-col-ul-normal-li">
+							Lorem ipsum dolor
+						</li>
+						<li class="upp-footer-col-ul-normal-li">
+							Lorem ipsum dolor
+						</li>
+					</ul>
+
+
+				</div>
+
 			</div>
 
 			<div class="col-md-4 col-12">
-				<h2>test</h2>
+				<div class="upp-footer-col">
+					<div class="upp-footer-col-header">
+						TAGS
+					</div>
+					
+					<ul class="upp-footer-col-ul-tags">
+						<li class="upp-footer-col-ul-tags-li">
+							
+						</li>
+					</ul>
+
+				</div>
+
 			</div>
 
 		</div>
@@ -91,4 +125,17 @@ export default {
 	text-align: left; 
 }
 
+
+.upp-footer-col-header {
+	font-size: 14px;
+/*
+	border-bottom-width: 1px
+	border-bottom-style: solid; 
+	border-bottom-color: black
+*/
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	padding: 10px 0;
+	text-align: left;
+	font-weight: 700;
+}
 </style>
