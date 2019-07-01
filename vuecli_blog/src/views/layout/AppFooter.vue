@@ -96,7 +96,30 @@ w elemencie z klasami .col-md-4.col-12 wykonujemy poniższe polecenie emmeta
 </div>
 
 
-<div class="down-footer"></div>
+<div class="down-footer">
+	
+	<div class="container">
+
+		<div class="down-footer-row">
+
+			<h3 class="down-footer-left">
+				Copyright Rafał Jaseniuk
+			</h3>
+
+			<div class="down-footer-right">
+				<iconSocial
+					v-for="icon in social_icons"
+					:key="icon.id"
+					:aHref="icon.href"
+					:imgSrc="icon.url"
+					:imgAlt="icon.name"/>
+			</div>
+
+		</div>	
+
+	</div>
+
+</div>
 
 
 
@@ -111,8 +134,37 @@ w elemencie z klasami .col-md-4.col-12 wykonujemy poniższe polecenie emmeta
 </template>
 
 <script>
+import iconTwitter from '@/assets/icon-twitter.png'
+import iconFb from '@/assets/icon-fb.png'
+import iconInsta from '@/assets/icon-instagram.png'
+
+import iconSocial from '@/components/IconSocial.vue'
 export default {
-	name: 'AppFooter'
+	name: 'AppFooter',
+	components: {
+		iconSocial
+	},
+	data () {
+		return {
+			social_icons: [
+				{
+					url: iconTwitter,
+					href: 'https://twitter.com',
+					name: 'twitter-icon'
+				},
+				{
+					url: iconFb,
+					href: 'https://facebook.com',
+					name: 'facebook-icon'
+				},
+				{
+					url: iconInsta,
+					href: 'https://instagram.com',
+					name: 'instagram-icon'
+				}
+			]
+		}
+	}
 }
 </script>
 <style>	
@@ -169,5 +221,25 @@ export default {
 	text-transform: uppercase;
 	color: white;
 	font-size: 10px;
+}
+.down-footer {
+	background: #222222;
+	padding: 10px 0;
+}
+.down-footer-row {
+	display: flex;
+  justify-content: space-between;
+	align-items: center;
+}
+.down-footer-row > .down-footer-left {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	font-size: 14px;
+	color: white;
+}
+.down-footer-row > .down-footer-right {
+	display: flex;
+	align-items: center;
 }
 </style>
