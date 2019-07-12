@@ -35,9 +35,10 @@ export default new Router({
       components: {
         header: AppHeader,
         default: () => import(/* webpackChunkName: "about" */
-          './views/singlePost.vue'),
+          './views/SinglePost.vue'),
         footer: AppFooter
-      }
+      },
+      props: { default: true, sidebar: false }
     },
   ]
 })

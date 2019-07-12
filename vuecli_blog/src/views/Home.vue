@@ -91,7 +91,7 @@ export default {
   data() {
   	return {
   		posts: [],
-  		limitDesc: 80
+  		limitDesc: 80  		
   	}
   },
   methods: {
