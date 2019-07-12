@@ -28,6 +28,16 @@ export default new Router({
         default: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
         footer: AppFooter 
       },
-    }
+    },
+    {
+      path: '/post/:postId',
+      name: 'singlePost',
+      components: {
+        header: AppHeader,
+        default: () => import(/* webpackChunkName: "about" */
+          './views/singlePost.vue'),
+        footer: AppFooter
+      }
+    },
   ]
 })

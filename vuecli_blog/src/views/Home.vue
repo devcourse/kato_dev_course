@@ -39,11 +39,23 @@
 			</p>
 			<div class="single-post-right-footer">
 				<div class="single-post-right-footer-left">
-					<a
-						class="single-post-right-footer-left-a"
-						href="#">
-							Czytaj więcej
-						</a>
+
+<!-- 
+wykorzystanie router-link przy przejściu do elementu pojedynczego wpisu
+<router-link
+	:to="
+	{name: 'singlePost', params: 'postId': postId}
+	">
+	Czytaj więcej
+</router-link>
+-->
+<!-- wykorzystanie tagu <a> przy przejściu do elementu pojedynczego wpisu przy wykorzystaniu własnej metody -->
+<a
+	@click="viewSinglePost($event, post.id)"
+	class="single-post-right-footer-left-a"
+	href="#">
+		Czytaj więcej
+	</a>
 				</div>
 
 				<div class="single-post-right-footer-right">
@@ -88,21 +100,33 @@ export default {
   	},
   	// string -> ciąg znaków który chcemy ograniczyć
   	// limit -> liczba ograniczająca np. 20 
-limitChars (string, limit) {
-	// wersja zwykła instrukcji warunkowej
-	// let stringReturned = ''
-	// if (string.length >= limit) {
-	// 	stringReturned = string.substr(0,limit) + '..'
-	// }
-	// return stringReturned 
+	limitChars (string, limit) {
+		// wersja zwykła instrukcji warunkowej
+		// let stringReturned = ''
+		// if (string.length >= limit) {
+		// 	stringReturned = string.substr(0,limit) + '..'
+		// }
+		// return stringReturned 
 
-	// wersja skrócona instrukcji warunkowej
-	return string.length >= limit ? string.substr(0,limit) + '..' : void 0
+		// wersja skrócona instrukcji warunkowej
+		return string.length >= limit ? string.substr(0,limit) + '..' : void 0
 
-	// poniższy kod wrzucamy 
-	// do template w miejscu gdzie listujemy wpisy
-	// {{limitChars(post.body, 40)}}
-}
+		// poniższy kod wrzucamy 
+		// do template w miejscu gdzie listujemy wpisy
+		// {{limitChars(post.body, 40)}}
+	},
+	/*
+	przekazujemy 2 argumenty do metody
+	event -> właściwośc kliknietego obiektu, na potrzeby wyłączenia standardowej funkcji przejścia do innej strony tagu <a></a>
+	postId -> id klikniętego wpisu
+	*/
+	viewSinglePost (event, postId) {
+		event.preventDefault()
+		this.$router.push({
+			name: 'singlePost',
+			params: { 'postId': postId }
+		})
+	}
   },
   created () {
   	const vm = this
