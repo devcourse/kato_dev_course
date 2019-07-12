@@ -24,13 +24,18 @@
 
 		<div class="single-post-right">
 			<h3 class="single-post-right-title">
-				Nazwa wpisu
+				<!-- 				
+				post.title 
+				jest równe
+				response.data[numer_wpisu].title 
+				-->
+				{{post.title}}
 			</h3>	
 			<span class="single-post-right-date">
 				12.07.2019
 			</span>
 			<p class="single-post-right-desc">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsam ex
+				{{limitChars(post.body, limitDesc)}}
 			</p>
 			<div class="single-post-right-footer">
 				<div class="single-post-right-footer-left">
@@ -40,9 +45,13 @@
 							Czytaj więcej
 						</a>
 				</div>
+
 				<div class="single-post-right-footer-right">
 					<div class="single-post-right-footer-right-comments">
-						<img src="" alt="">
+						<img
+							class="single-post-right-footer-right-comments-icon"
+							src="@/assets/icon-comments.png"
+							alt="">
 						<span class="single-post-right-footer-right-comments-count">
 							0
 						</span>
@@ -53,8 +62,6 @@
 
 	</div>
 </div>
-
-
 
 				</div>
 		</div>
@@ -71,13 +78,31 @@ export default {
   },
   data() {
   	return {
-  		posts: []
+  		posts: [],
+  		limitDesc: 80
   	}
   },
   methods: {
   	getPosts() {
   		return axios.get('https://jsonplaceholder.typicode.com/posts')
-  	}
+  	},
+  	// string -> ciąg znaków który chcemy ograniczyć
+  	// limit -> liczba ograniczająca np. 20 
+limitChars (string, limit) {
+	// wersja zwykła instrukcji warunkowej
+	// let stringReturned = ''
+	// if (string.length >= limit) {
+	// 	stringReturned = string.substr(0,limit) + '..'
+	// }
+	// return stringReturned 
+
+	// wersja skrócona instrukcji warunkowej
+	return string.length >= limit ? string.substr(0,limit) + '..' : void 0
+
+	// poniższy kod wrzucamy 
+	// do template w miejscu gdzie listujemy wpisy
+	// {{limitChars(post.body, 40)}}
+}
   },
   created () {
   	const vm = this
@@ -116,5 +141,14 @@ export default {
 }
 .single-post-left-img:hover {
 	transform: translate(0, -10px);
+}
+.single-post-right {
+    text-align: left;
+    padding: 23px;
+    height: 100%;
+}
+.single-post-right-footer {
+	display: flex;
+    justify-content: space-between;
 }
 </style>
